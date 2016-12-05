@@ -6,6 +6,7 @@ import argparse
 import imutils
 from imutils.video import VideoStream
 import telepot
+from pprint import pprint
 
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
@@ -162,5 +163,6 @@ while(True):
 out.release()
 cv2.destroyAllWindows()
 bot.sendMessage(285007767, 'Finished. Sending Video')
-file_id = open(filename)
-bot.sendVideo(285007767, file_id)
+file_id = open(filename,'rb')
+response=bot.sendVideo(285007767, file_id)
+pprint(response)
